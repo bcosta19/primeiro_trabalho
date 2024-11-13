@@ -12,6 +12,7 @@ class MyService(rpyc.Service):
         pass
 
     def exposed_get_answer(self): # método exposto
+        print("Chamada de get_answer!")
         return 42
 
     exposed_the_real_answer_though = 43 #este é um atributo exposto
@@ -23,4 +24,5 @@ class MyService(rpyc.Service):
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
     t = ThreadedServer(MyService, port=18861) # Oferece o serviço na porta 18861 para ser acessado por outros clientes
+    print(t) # Verificação do endereço 
     t.start()
